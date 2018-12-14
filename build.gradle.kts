@@ -7,7 +7,7 @@ import deps.versions
 import org.gradle.initialization.StartParameterBuildOptions.BuildScanOption
 import org.gradle.internal.scan.config.BuildScanConfig
 
-group = "by.mcs"
+group = "com.mm.graphql"
 version = "1.0-SNAPSHOT"
 
 buildscript {
