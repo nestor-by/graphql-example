@@ -1,6 +1,6 @@
 package com.mm.graphql.client
 
-import by.mcs.graphql.api.BorrowerByIdQuery
+import com.idfinance.graphql.api.FinBooksCountQuery
 import com.mm.graphql.apollo.reactor.ReactorClient
 import com.mm.graphql.client.config.clientModule
 import org.kodein.di.Kodein
@@ -17,9 +17,13 @@ object ClientApp : KodeinAware {
   @JvmStatic
   fun main(args: Array<String>) {
     client
-        .from(BorrowerByIdQuery(300))
+        .from(FinBooksCountQuery(listOf(1, 2, 3)))
         .map { it.data() }
-        .flatMapIterable { x -> x?.borrowers }
-        .subscribe { println(it.work?.education) }
+        .flatMapIterable { x -> x?.finBooksCount }
+        .subscribe {
+          println(it.book?.author?.lastName)
+          println(it.book?.title)
+          println("~~~~~~~~~")
+        }
   }
 }

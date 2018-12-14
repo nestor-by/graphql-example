@@ -1,6 +1,8 @@
 package com.mm.graphql.client.config
 
 import com.apollographql.apollo.ApolloClient
+import com.idfinance.graphql.api.type.CustomType
+import com.mm.graphql.apollo.LongTypeAdapter
 import com.mm.graphql.apollo.reactor.reactor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,7 +27,7 @@ val clientModule = Kodein.Module("clientModule") {
         .logger { priority, message, _, params -> logger.info("{}: {}", priority, String.format(message, *params)) }
         .serverUrl("http://localhost:8080/graphql")
         .okHttpClient(instance())
-//        .addCustomTypeAdapter(CustomType.LOCALDATE, LocalDateTypeAdapter)
+        .addCustomTypeAdapter(CustomType.LONG, LongTypeAdapter)
 //        .addCustomTypeAdapter(CustomType.LOCALDATETIME, LocalDateTimeTypeAdapter)
         .reactor()
   }

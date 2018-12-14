@@ -1,0 +1,16 @@
+query finBooksCount($id: [Long]!){
+  finBooksCount(ids: $id) {
+    book {
+      id
+      language {
+        description
+      }
+      author {
+        lastName
+      }
+      title
+    }
+    stockSum
+  }
+}
+
