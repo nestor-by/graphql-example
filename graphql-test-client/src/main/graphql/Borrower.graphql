@@ -1,0 +1,14 @@
+query BorrowerById($id: [Long]!){
+  borrower(id:$id) {
+    id
+    userAccountId
+    userAccount{
+      email
+    }
+    personalData {
+      last: fullName
+      paymentsLoans
+      birthday
+    }
+  }
+}
